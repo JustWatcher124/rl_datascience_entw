@@ -10,7 +10,7 @@ modelsaves/*
 logs/*
 !logs/.gitkeep
 
-
+bericht/
 # C extensions
 *.so
 
