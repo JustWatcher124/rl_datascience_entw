@@ -6,8 +6,9 @@ __pycache__/
 
 # save the folders but not the files
 modelsaves/*
-!modelsaves/
-
+!modelsaves/.gitkeep
+logs/*
+!logs/.gitkeep
 
 
 # C extensions
