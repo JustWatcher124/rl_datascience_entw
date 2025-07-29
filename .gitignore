@@ -3,6 +3,13 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+
+# save the folders but not the files
+modelsaves/*
+!modelsaves/
+
+
+
 # C extensions
 *.so
 
