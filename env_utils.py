@@ -2,7 +2,26 @@ import numpy as np
 
 
 def get_car_state(car):
-    """Extracts the car state from the RocketSim car object."""
+    """
+    Extract the car's state from a RocketSim car object as a numpy array.
+
+    The returned array contains the following features:
+        - Position (x, y, z)
+        - Velocity (x, y, z)
+        - Rotation matrix (first row: 3 values)
+        - Angular velocity (x, y, z)
+        - Last relative dodge torque (x, y, z)
+        - Current flip relative torque (x, y, z)
+        - Last controls: throttle, steer, pitch, yaw, roll, boost, jump, handbrake
+        - World contact normal (x, y, z)
+        - Wheels with contact (4 values, as integers)
+
+    Args:
+        car: RocketSim car object.
+
+    Returns:
+        np.ndarray: Array of car state features with shape (1, N).
+    """
     car_pos = car.get_state().pos
     car_vel = car.get_state().vel
     car_rot_mat = car.get_state().rot_mat
@@ -29,8 +48,24 @@ def get_car_state(car):
     ]).reshape(1, -1)
     return car_state
 
+
 def get_ball_state(car):
-    """Extracts the ball state from the RocketSim ball object."""
+    """
+    Extracts ball hit information from the RocketSim car object and returns it as a numpy array.
+
+    The returned array contains:
+        - Relative position on ball (x, y, z)
+        - Ball position (x, y, z)
+        - Extra hit velocity (x, y, z)
+        - Tick count when hit
+        - Tick count when extra impulse applied
+
+    Args:
+        car: RocketSim car object.
+
+    Returns:
+        np.ndarray: Array of ball hit features with shape (1, 11).
+    """
     ball_hit_info = car.get_state().ball_hit_info
     rel_pos_on_ball = ball_hit_info.relative_pos_on_ball  # Vec: .x, .y, .z
     ball_pos = ball_hit_info.ball_pos             # Vec: .x, .y, .z

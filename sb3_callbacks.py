@@ -1,10 +1,10 @@
-# %% imports
+# %% Imports
 from stable_baselines3.common.results_plotter import load_results, ts2xy
 from stable_baselines3.common.callbacks import BaseCallback
 import os
 import numpy as np
 import csv
-# %% callback and environment definition
+# %% Callback and environment definition
 class SaveOnBestTrainingRewardCallback(BaseCallback):
     """
     Callback for saving a model (the check is done every ``check_freq`` steps)
@@ -53,7 +53,6 @@ class SaveOnBestTrainingRewardCallback(BaseCallback):
                     self.model.save(self.save_path)
 
         return True
-
 
 
 class CsvLoggerCallback(BaseCallback):
